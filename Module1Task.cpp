@@ -16,6 +16,7 @@ struct Time {
     int minute;
 };
 
+//установка даты
 void Set(Date *d,int day, int month, int year)
 {
     if(day >= 1 && day <= 31)
@@ -29,12 +30,14 @@ void Set(Date *d,int day, int month, int year)
     else cout << "Year are in wrong range (1900 to 2100)" << endl;
 }
 
+//вывод даты в консоль
 void Print(Date *d)
 {
     setlocale(LC_ALL, "Russian");
     cout << "Дата: " << d->day << '.' << d->month << '.' << d->year << endl;
 }
 
+//запись даты с клавиатуры
 void Read(Date *d)
 {
     int day, month, year;
@@ -47,6 +50,7 @@ void Read(Date *d)
     Set(d, day, month, year);
 }
 
+//установка времени
 void Set(Time* t, int hour, int minute, int second = 0)
 {
     if (second >= 0 && second <= 59)
@@ -60,12 +64,14 @@ void Set(Time* t, int hour, int minute, int second = 0)
     else cout << "Hours are in wrong range (0 to 23)" << endl;
 }
 
+//вывод времени в консоль
 void Print(Time* t)
 {
     setlocale(LC_ALL, "Russian");
     cout << "Время: " << t->hour << ':' << t->minute << ':' <<t->second << endl;
 }
 
+//запись даты с клавиатуры
 void Read(Time* t)
 {
     int hour, minute, second;
@@ -80,16 +86,16 @@ void Read(Time* t)
 
 int main()
 {
-    Date* d1 = new Date;
+    Date* d1 = new Date; //создаем объект Date
     Set(d1, 1, 12, 2018);
     Print(d1);
-    Time* t1 = new Time;
+    Time* t1 = new Time; // создаем объект Time
     Set(t1, 17, 12,66);
     Print(t1);
     Read(d1);
     Print(d1);
     Read(t1);
     Print(t1);
-    delete d1;
-    delete t1;
+    delete d1; //очищаем память
+    delete t1; //очищаем память
 }
