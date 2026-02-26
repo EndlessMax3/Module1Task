@@ -30,6 +30,7 @@ jobs:
     steps:
     - name: Deploy to local folder
       run: |
-        if exist "$env:DEPLOY_DIR\$env:PROJECT_NAME" rmdir "$env:DEPLOY_DIR\$env:PROJECT_NAME" /S /Q
+        if (Test-Path "$env:DEPLOY_DIR\$env:PROJECT_NAME") { Remove-Item -Path "$env:DEPLOY_DIR\$env:PROJECT_NAME" -Force -Recurse }
         mkdir $env:DEPLOY_DIR\$env:PROJECT_NAME\
         xcopy $env:PLATFORM\$env:BUILD_CONFIG\* $env:DEPLOY_DIR\$env:PROJECT_NAME\ /E /Y
+     
