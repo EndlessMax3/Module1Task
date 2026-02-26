@@ -84,6 +84,8 @@ void Read(Time* t)
     Set(t, hour, minute, second);
 }
 
+//comment
+
 int main()
 {
     Date* d1 = new Date; //создаем объект Date
