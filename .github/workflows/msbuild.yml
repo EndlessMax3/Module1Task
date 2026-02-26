@@ -1,5 +1,11 @@
 name: Build C++ Console App
 
+env:
+  BUILD_CONFIG: Release
+  PLATFORM: x64
+  PROJECT_NAME: Module1Task
+  DEPLOY_DIR: E:\Programming\Deploy\%PROJECT_NAME%
+
 on:
   push:
     branches: [ "master" ]
@@ -16,4 +22,9 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build solution
-      run: msbuild Module1Task.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild %PROJECT_NAME%.sln /p:Configuration=%BUILD_CONFIG% /p:Platform=%PLATFORM%
+
+    - name: Deploy to local folder
+      run: |
+        mkdir %DEPLOY_DIR%
+        xcopy %PLATFORM%\%BUILD_CONFIG%\* %DEPLOY_DIR%\ /E /Y
