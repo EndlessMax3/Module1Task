@@ -24,6 +24,10 @@ jobs:
     - name: Build solution
       run: msbuild $env:PROJECT_NAME.sln /p:Configuration=$env:BUILD_CONFIG /p:Platform=$env:PLATFORM
 
+  deploy:
+    runs-on: self-hosted
+
+    steps:
     - name: Deploy to local folder
       run: |
         mkdir $env:DEPLOY_DIR\$env:PROJECT_NAME\
