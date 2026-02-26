@@ -86,6 +86,7 @@ void Read(Time* t)
 
 int main()
 {
+    std::cout << "Deploy updated successfuly" << std::endl;
     Date* d1 = new Date; //создаем объект Date
     Set(d1, 1, 12, 2018);
     Print(d1);
