@@ -4,7 +4,7 @@ env:
   BUILD_CONFIG: Release
   PLATFORM: x64
   PROJECT_NAME: Module1Task
-  DEPLOY_DIR: E:\Programming\Deploy\$env:PROJECT_NAME
+  DEPLOY_DIR: E:\Programming\Deploy
 
 on:
   push:
@@ -27,4 +27,4 @@ jobs:
     - name: Deploy to local folder
       run: |
         mkdir $env:DEPLOY_DIR
-        xcopy $env:PLATFORM\$env:BUILD_CONFIG\* $env:DEPLOY_DIR\ /E /Y
+        xcopy $env:PLATFORM\$env:BUILD_CONFIG\* $env:DEPLOY_DIR\$env:PROJECT_NAME\ /E /Y
