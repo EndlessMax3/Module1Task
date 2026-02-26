@@ -22,9 +22,9 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build solution
-      run: msbuild %PROJECT_NAME%.sln /p:Configuration=%BUILD_CONFIG% /p:Platform=%PLATFORM%
+      run: msbuild $env:PROJECT_NAME.sln /p:Configuration=$env:BUILD_CONFIG /p:Platform=$env:PLATFORM
 
     - name: Deploy to local folder
       run: |
-        mkdir %DEPLOY_DIR%
-        xcopy %PLATFORM%\%BUILD_CONFIG%\* %DEPLOY_DIR%\ /E /Y
+        mkdir $env:DEPLOY_DIR
+        xcopy $env:PLATFORM\$env:BUILD_CONFIG\* $env:DEPLOY_DIR\ /E /Y
